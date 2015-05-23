@@ -27,7 +27,7 @@ router.get('/users/:userid/list/:id', function(req, res) {
   })
   .catch(function(err){
     console.log(err);
-    res.send(400, 'error')
+    res.send(400, {error: 'error'})
   });
 });
 
@@ -49,7 +49,7 @@ router.post('/users/:userid/list', function(req, res) {
     }
   })
   .catch(function(err){
-    res.send(400, err)
+    res.send(400, {error: err})
   });
 });
 
@@ -61,7 +61,7 @@ router.put('/users/:userid/list/:id', function(req, res) {
     res.send(200, 'success');
   })
   .catch(function(err){
-    res.send(400, err)
+    res.send(400, {error: err})
   });
 });
 
@@ -77,7 +77,7 @@ router.get('/users/:userid/note/:id', function(req, res) {
   })
   .catch(function(err){
     console.log(err);
-    res.send(400, 'error')
+    res.send(400, {error: err})
   });
 });
 
@@ -95,11 +95,11 @@ router.post('/users/:userid/note', function(req, res) {
         res.send(200, {id: data.dataValues.id});
       })
     }else{
-      throw 'This user has own listframes.'
+      throw 'This user has own noteframes.'
     }
   })
   .catch(function(err){
-    res.send(400, err)
+    res.send(400, {error: err})
   });
 });
 
@@ -111,7 +111,7 @@ router.put('/users/:userid/note/:id', function(req, res) {
     res.send(200, 'success');
   })
   .catch(function(err){
-    res.send(400, err)
+    res.send(400, {error: err})
   });
 });
 
@@ -127,7 +127,7 @@ router.get('/users/:userid/photo/:id', function(req, res) {
   })
   .catch(function(err){
     console.log(err);
-    res.send(400, 'error')
+    res.send(400, {error: err})
   });
 });
 
@@ -145,11 +145,11 @@ router.post('/users/:userid/photo', function(req, res) {
         res.send(200, {id: data.dataValues.id});
       })
     }else{
-      throw 'This user has own listframes.'
+      throw 'This user has own photoframes.'
     }
   })
   .catch(function(err){
-    res.send(400, err)
+    res.send(400, {error: err})
   });
 });
 
@@ -161,7 +161,7 @@ router.put('/users/:userid/photo/:id', function(req, res) {
     res.send(200, 'success');
   })
   .catch(function(err){
-    res.send(400, err)
+    res.send(400, {error: err})
   });
 });
 
@@ -177,7 +177,7 @@ router.get('/users/:userid/routine/:id', function(req, res) {
   })
   .catch(function(err){
     console.log(err);
-    res.send(400, 'error')
+    res.send(400, {error: err})
   });
 });
 
@@ -195,11 +195,11 @@ router.post('/users/:userid/routine', function(req, res) {
         res.send(200, {id: data.dataValues.id});
       })
     }else{
-      throw 'This user has own listframes.'
+      throw 'This user has own routineframes.'
     }
   })
   .catch(function(err){
-    res.send(400, err)
+    res.send(400, {error: err})
   });
 });
 
@@ -211,7 +211,7 @@ router.put('/users/:userid/routine/:id', function(req, res) {
     res.send(200, 'success');
   })
   .catch(function(err){
-    res.send(400, err)
+    res.send(400, {error: err})
   });
 });
 
@@ -227,7 +227,7 @@ router.get('/users/:userid/static/:id', function(req, res) {
   })
   .catch(function(err){
     console.log(err);
-    res.send(400, 'error')
+    res.send(400, {error: err})
   });
 });
 
@@ -245,11 +245,11 @@ router.post('/users/:userid/static', function(req, res) {
         res.send(200, {id: data.dataValues.id});
       })
     }else{
-      throw 'This user has own listframes.'
+      throw 'This user has own staticframes.'
     }
   })
   .catch(function(err){
-    res.send(400, err)
+    res.send(400, {error: err})
   });
 });
 
@@ -261,7 +261,7 @@ router.put('/users/:userid/static/:id', function(req, res) {
     res.send(200, 'success');
   })
   .catch(function(err){
-    res.send(400, err)
+    res.send(400, {error: err})
   });
 });
 
@@ -277,7 +277,7 @@ router.get('/users/:userid/story/:id', function(req, res) {
   })
   .catch(function(err){
     console.log(err);
-    res.send(400, 'error')
+    res.send(400, {error: err})
   });
 });
 
@@ -295,11 +295,11 @@ router.post('/users/:userid/story', function(req, res) {
         res.send(200, {id: data.dataValues.id});
       })
     }else{
-      throw 'This user has own listframes.'
+      throw 'This user has own storyframes.'
     }
   })
   .catch(function(err){
-    res.send(400, err)
+    res.send(400, {error: err})
   });
 });
 
@@ -311,7 +311,7 @@ router.put('/users/:userid/story/:id', function(req, res) {
     res.send(200, 'success');
   })
   .catch(function(err){
-    res.send(400, err)
+    res.send(400, {error: err})
   });
 });
 
@@ -329,11 +329,11 @@ router.post('/users/:userid/text', function(req, res) {
         res.send(200, {id: data.dataValues.id});
       })
     }else{
-      throw 'This user has own listframes.'
+      throw 'This user has own textframes.'
     }
   })
   .catch(function(err){
-    res.send(400, err)
+    res.send(400, {error: err})
   });
 });
 
@@ -349,7 +349,7 @@ router.get('/users/:userid/text/:id', function(req, res) {
   })
   .catch(function(err){
     console.log(err);
-    res.send(400, 'error')
+    res.send(400, {error: err})
   });
 });
 
@@ -361,7 +361,7 @@ router.put('/users/:userid/text/:id', function(req, res) {
     res.send(200, 'success');
   })
   .catch(function(err){
-    res.send(400, err)
+    res.send(400, {error: err})
   });
 });
 
@@ -377,7 +377,7 @@ router.get('/users/:userid/vedio/:id', function(req, res) {
   })
   .catch(function(err){
     console.log(err);
-    res.send(400, 'error')
+    res.send(400, {error: err})
   });
 });
 
@@ -395,11 +395,11 @@ router.post('/users/:userid/vedio', function(req, res) {
         res.send(200, {id: data.dataValues.id});
       })
     }else{
-      throw 'This user has own listframes.'
+      throw 'This user has own vedioframes.'
     }
   })
   .catch(function(err){
-    res.send(400, err)
+    res.send(400, {error: err})
   });
 });
 
@@ -411,7 +411,7 @@ router.put('/users/:userid/vedio/:id', function(req, res) {
     res.send(200, 'success');
   })
   .catch(function(err){
-    res.send(400, err)
+    res.send(400, {error: err})
   });
 });
 
@@ -427,7 +427,7 @@ router.get('/users/:userid/web/:id', function(req, res) {
   })
   .catch(function(err){
     console.log(err);
-    res.send(400, 'error')
+    res.send(400, {error: err})
   });
 });
 
@@ -445,11 +445,11 @@ router.post('/users/:userid/web', function(req, res) {
         res.send(200, {id: data.dataValues.id});
       })
     }else{
-      throw 'This user has own listframes.'
+      throw 'This user has own webframes.'
     }
   })
   .catch(function(err){
-    res.send(400, err)
+    res.send(400, {error: err})
   });
 });
 
@@ -461,7 +461,7 @@ router.put('/users/:userid/web/:id', function(req, res) {
     res.send(200, 'success');
   })
   .catch(function(err){
-    res.send(400, err)
+    res.send(400, {error: err})
   });
 });
 

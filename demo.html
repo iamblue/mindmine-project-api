@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<meta charset='utf-8'>
+<head>
+  <title></title>
+</head>
+<body>
+  <ul>
+    <li>userid: <input type="text" class="userid"/></li>
+    <li>listid: <input type="text" class="listid"/></li>
+    <li>取得: <div class="getData"></div>
+    <button onclick="get()">取得</button>
+    </li>
+    <li>新增: <input type="text" class="newData"/>
+    <button onclick="send()">新增</button>
+    </li>
+    <li>更新: <input type="text" class="updateData"/>
+    <button onclick="update()">更新</button>
+    </li>
+
+  </ul>
+  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script type="text/javascript">
+    //新增
+    function send(){
+      var userid = $('.userid').val();
+      var listid = $('.listid').val();
+      $.ajax({
+        method: "POST",
+        url: "http://127.0.0.1:3999/users/" + userid + "/list",
+        data: { data: $('.newData').val() }
+      })
+      .done(function( msg ) {
+        console.log(msg);
+        alert( "listframe id: " + msg.id );
+      })
+      .fail(function(err) {
+        alert( err.responseJSON.error );
+      })
+    };
+    //取得
+    function get(){
+      var userid = $('.userid').val();
+      var listid = $('.listid').val();
+      $.ajax({
+        method: "GET",
+        url: "http://127.0.0.1:3999/users/" + userid + "/list/" + listid,
+      })
+      .done(function( msg ) {
+        console.log(msg);
+        $('.getData').html(msg.data);
+      })
+      .fail(function(err) {
+        alert( err.responseJSON.error );
+      })
+    }
+    //更新
+    function update(){
+      var userid = $('.userid').val();
+      var listid = $('.listid').val();
+      $.ajax({
+        method: "PUT",
+        url: "http://127.0.0.1:3999/users/" + userid + "/list/" + listid,
+        data: {data: $('.updateData').val()}
+      })
+      .done(function( msg ) {
+        console.log(msg)
+        if (msg == 'success'){
+          $('.getData').html($('.updateData').val());
+        }
+      })
+      .fail(function(err) {
+        alert( err.responseJSON.error );
+      })
+    }
+  </script>
+</body>
+</html>
