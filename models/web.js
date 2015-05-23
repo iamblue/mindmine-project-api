@@ -1,10 +1,14 @@
-var webFrame = sequelize.define('webframe', {
+var webFrame = sequelize.define('webframes', {
   id: {
     type: Sequelize.BIGINT,
     autoIncrement: true
   },
-  userid: Sequelize.STRING,
-  data: Sequelize.STRING,
+  userid: {
+    type: Sequelize.STRING,
+  },
+  data: {
+    type: Sequelize.TEXT,
+  },
   createdAt: {
     type: Sequelize.DATE,
     allowNull: false,
@@ -15,6 +19,8 @@ var webFrame = sequelize.define('webframe', {
     allowNull: false,
     defaultValue: 'NOW()'
   }
+},{
+  freezeTableName: true
 });
 
 module.exports = webFrame;

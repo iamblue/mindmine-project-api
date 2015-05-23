@@ -1,10 +1,14 @@
-var storyFrame = sequelize.define('storyframe', {
+var storyFrame = sequelize.define('storyframes', {
   id: {
     type: Sequelize.BIGINT,
     autoIncrement: true
   },
-  userid: Sequelize.STRING,
-  data: Sequelize.STRING,
+  userid: {
+    type: Sequelize.STRING,
+  },
+  data: {
+    type: Sequelize.TEXT,
+  },
   createdAt: {
     type: Sequelize.DATE,
     allowNull: false,
@@ -15,6 +19,7 @@ var storyFrame = sequelize.define('storyframe', {
     allowNull: false,
     defaultValue: 'NOW()'
   }
+},{
+  freezeTableName: true
 });
-
 module.exports = storyFrame;

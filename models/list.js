@@ -1,10 +1,14 @@
-var listFrame = sequelize.define('listframe', {
+var listFrame = sequelize.define('listframes', {
   id: {
     type: Sequelize.BIGINT,
     autoIncrement: true
   },
-  userid: Sequelize.STRING,
-  data: Sequelize.STRING,
+  userid: {
+    type: Sequelize.STRING,
+  },
+  data: {
+    type: Sequelize.TEXT,
+  },
   createdAt: {
     type: Sequelize.DATE,
     allowNull: false,
@@ -15,6 +19,8 @@ var listFrame = sequelize.define('listframe', {
     allowNull: false,
     defaultValue: 'NOW()'
   }
+},{
+  freezeTableName: true
 });
 
-module.exports = listFrame;
+module.exports = listFrame

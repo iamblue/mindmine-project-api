@@ -1,10 +1,14 @@
-var textFrame = sequelize.define('textframe', {
+var textFrame = sequelize.define('textframes', {
   id: {
     type: Sequelize.BIGINT,
     autoIncrement: true
   },
-  userid: Sequelize.STRING,
-  data: Sequelize.STRING,
+  userid: {
+    type: Sequelize.STRING,
+  },
+  data: {
+    type: Sequelize.TEXT,
+  },
   createdAt: {
     type: Sequelize.DATE,
     allowNull: false,
@@ -15,6 +19,8 @@ var textFrame = sequelize.define('textframe', {
     allowNull: false,
     defaultValue: 'NOW()'
   }
+},{
+  freezeTableName: true
 });
 
 module.exports = textFrame;

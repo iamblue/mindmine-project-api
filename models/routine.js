@@ -1,10 +1,14 @@
-var routineFrame = sequelize.define('routineframe', {
+var routineFrame = sequelize.define('routineframes', {
   id: {
     type: Sequelize.BIGINT,
     autoIncrement: true
   },
-  userid: Sequelize.STRING,
-  data: Sequelize.STRING,
+  userid: {
+    type: Sequelize.STRING,
+  },
+  data: {
+    type: Sequelize.TEXT,
+  },
   createdAt: {
     type: Sequelize.DATE,
     allowNull: false,
@@ -15,6 +19,8 @@ var routineFrame = sequelize.define('routineframe', {
     allowNull: false,
     defaultValue: 'NOW()'
   }
+},{
+  freezeTableName: true
 });
 
 module.exports = routineFrame;

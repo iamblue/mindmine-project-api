@@ -7,13 +7,8 @@ var bodyParser = require('body-parser');
 
 global.Sequelize = require('sequelize');
 var config = require('./config');
-global.sequelize = new Sequelize(
-  config.database,
-  config.username,
-  config.password, {
-    host: 'localhost',
-    dialect: 'postgres'
-});
+
+global.sequelize = new Sequelize('postgres://postgres:huoo7919@localhost:5433/mindmineproject');
 var model = require('./models/index')();
 var routesFrameController = require('./routes/index');
 
