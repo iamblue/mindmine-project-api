@@ -19,7 +19,11 @@ router.get('/users/:userid/list/:id', function(req, res) {
   listModel
   .find({ where: {id : req.params.id} })
   .then(function(data){
-    res.send(200, data);
+    if(data == null){
+      res.send(200, {data: null});
+    }else{
+      res.send(200, {data: data.data});
+    }
   })
   .catch(function(err){
     console.log(err);
@@ -65,7 +69,11 @@ router.get('/users/:userid/note/:id', function(req, res) {
   noteModel
   .find({ where: {id : req.params.id} })
   .then(function(data){
-    res.send(200, data);
+    if(data == null){
+      res.send(200, {data: null});
+    }else{
+      res.send(200, {data: data.data});
+    }
   })
   .catch(function(err){
     console.log(err);
@@ -111,7 +119,11 @@ router.get('/users/:userid/photo/:id', function(req, res) {
   photoModel
   .find({ where: {id : req.params.id} })
   .then(function(data){
-    res.send(200, data);
+    if(data == null){
+      res.send(200, {data: null});
+    }else{
+      res.send(200, {data: data.data});
+    }
   })
   .catch(function(err){
     console.log(err);
@@ -157,7 +169,11 @@ router.get('/users/:userid/routine/:id', function(req, res) {
   routineModel
   .find({ where: {id : req.params.id} })
   .then(function(data){
-    res.send(200, data);
+    if(data == null){
+      res.send(200, {data: null});
+    }else{
+      res.send(200, {data: data.data});
+    }
   })
   .catch(function(err){
     console.log(err);
@@ -203,7 +219,11 @@ router.get('/users/:userid/static/:id', function(req, res) {
   staticModel
   .find({ where: {id : req.params.id} })
   .then(function(data){
-    res.send(200, data);
+    if(data == null){
+      res.send(200, {data: null});
+    }else{
+      res.send(200, {data: data.data});
+    }
   })
   .catch(function(err){
     console.log(err);
@@ -249,7 +269,11 @@ router.get('/users/:userid/story/:id', function(req, res) {
   storyModel
   .find({ where: {id : req.params.id} })
   .then(function(data){
-    res.send(200, data);
+    if(data == null){
+      res.send(200, {data: null});
+    }else{
+      res.send(200, {data: data.data});
+    }
   })
   .catch(function(err){
     console.log(err);
@@ -317,7 +341,11 @@ router.get('/users/:userid/text/:id', function(req, res) {
   textModel
   .find({ where: {id : req.params.id} })
   .then(function(data){
-    res.send(200, data);
+    if(data == null){
+      res.send(200, {data: null});
+    }else{
+      res.send(200, {data: data.data});
+    }
   })
   .catch(function(err){
     console.log(err);
@@ -341,7 +369,11 @@ router.get('/users/:userid/vedio/:id', function(req, res) {
   vedioModel
   .find({ where: {id : req.params.id} })
   .then(function(data){
-    res.send(200, data.data);
+    if(data == null){
+      res.send(200, {data: null});
+    }else{
+      res.send(200, {data: data.data});
+    }
   })
   .catch(function(err){
     console.log(err);
@@ -387,7 +419,11 @@ router.get('/users/:userid/web/:id', function(req, res) {
   webModel
   .find({ where: {id : req.params.id} })
   .then(function(data){
-    res.send(200, data);
+    if(data == null){
+      res.send(200, {data: null});
+    }else{
+      res.send(200, {data: data.data});
+    }
   })
   .catch(function(err){
     console.log(err);
