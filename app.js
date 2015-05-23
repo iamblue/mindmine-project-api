@@ -7,8 +7,14 @@ var bodyParser = require('body-parser');
 
 global.Sequelize = require('sequelize');
 var config = require('./config');
-
-global.sequelize = new Sequelize('postgres://postgres:huoo7919@localhost:5433/mindmineproject');
+var postgres = {
+  username: config.username,
+  password: config.password,
+  host: config.host,
+  port: config.port,
+  database: config.database
+}
+global.sequelize = new Sequelize('postgres://' + postgres.username + ':' + postgres.password + '@' + postgres.host + ':' + postgres.port + '/' + postgres.database);
 var model = require('./models/index')();
 var routesFrameController = require('./routes/index');
 
