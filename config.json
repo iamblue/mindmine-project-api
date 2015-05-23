@@ -1,9 +1,0 @@
-{
-  "database": "mindmineproject",
-  "username": "postgres",
-  "password": "",
-  "host": "localhost",
-  "port": 5432,
-  "dialect": "postgres",
-  "logging": true
-}
