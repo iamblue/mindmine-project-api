@@ -9,12 +9,124 @@ var textModel = require('./../models/text')
 var videoModel = require('./../models/video')
 var webModel = require('./../models/web')
 var listModel = require('./../models/list')
+var Promise = require('bluebird');
 
 /* GET home page. */
 router.get('/', function(req, res) {
   res.render('index', { title: 'Express' });
 });
 
+router.get('/users/:userid/all', function(req, res){
+  var allData = {}
+  return new Promise(function(resolve, reject){
+    listModel
+    .find({ where: {userid : req.params.userid} })
+    .then(function(data){
+      if (data != null) {
+        allData.list = { id: data.id, data: data.data };
+      } else {
+        allData.list = {};
+      }
+      resolve();
+    }).catch(function(err){
+      reject(err);
+    })
+  }).then(function(){
+    noteModel
+    .find({ where: {userid : req.params.userid} })
+    .then(function(data){
+      if (data != null){
+        allData.node = { id: data.id, data: data.data };
+      } else {
+        allData.node = {};
+      }
+    })
+  }).then(function(){
+    photoModel
+    .find({ where: {userid : req.params.userid} })
+    .then(function(data){
+      if (data != null){
+        allData.photo = { id: data.id, data: data.data };
+      } else {
+        allData.photo = {};
+      }
+    })
+  }).then(function(){
+    routineModel
+    .find({ where: {userid : req.params.userid} })
+    .then(function(data){
+      if (data != null){
+        allData.routine = { id: data.id, data: data.data };
+      } else {
+        allData.routine = {};
+      }
+    })
+  }).then(function(){
+    staticModel
+    .find({ where: {userid : req.params.userid} })
+    .then(function(data){
+      if (data != null){
+        allData.static = { id: data.id, data: data.data };
+      } else {
+        allData.static = {};
+      }
+    })
+  }).then(function(){
+    storyModel
+    .find({ where: {userid : req.params.userid} })
+    .then(function(data){
+      if (data != null){
+        allData.story = { id: data.id, data: data.data };
+      } else {
+        allData.story = {};
+      }
+    })
+  }).then(function(){
+    textModel
+    .find({where: {userid: req.params.userid}})
+    .then(function(data){
+      if (data != null){
+        allData.text = { id: data.id, data: data.data };
+      } else {
+        allData.text = {};
+      }
+    })
+  }).then(function(){
+    webModel
+    .find({where: {userid: req.params.userid}})
+    .then(function(data){
+      if (data != null){
+        allData.web = { id: data.id, data: data.data };
+      } else {
+        allData.web = {};
+      }
+    })
+  }).then(function(){
+    videoModel
+    .find({where: {userid: req.params.userid}})
+    .then(function(data){
+      if (data != null){
+        allData.vedio = { id: data.id, data: data.data };
+      } else {
+        allData.vedio = {};
+      }
+    })
+  }).then(function(){
+    res.send(200, {data: allData});
+  }).catch(function(err){
+    console.log(err);
+    res.send(400, {error: err});
+  });
+//   new Promise((resolve, reject) => {
+//       request
+//       .post(`${host}/oauth/login/third`)
+//       .send(data)
+//       .set('Accept', 'application/json')
+//       .end(function(err, res) {
+//         return res.ok ? resolve(res.body.token) : reject(err);
+//       });
+// });
+});
 router.get('/users/:userid/list/:id', function(req, res) {
   listModel
   .find({ where: {id : req.params.id} })
@@ -366,7 +478,7 @@ router.put('/users/:userid/text/:id', function(req, res) {
 });
 
 router.get('/users/:userid/vedio/:id', function(req, res) {
-  vedioModel
+  videoModel
   .find({ where: {id : req.params.id} })
   .then(function(data){
     if(data == null){
@@ -382,12 +494,12 @@ router.get('/users/:userid/vedio/:id', function(req, res) {
 });
 
 router.post('/users/:userid/vedio', function(req, res) {
-  vedioModel
+  videoModel
   .find({where: {userid: req.params.userid}})
   .then(function(data){
     if (data == null){
       var data = req.body.data;
-      vedioModel
+      videoModel
       .create({
         data: data,
         userid: req.params.userid
@@ -405,7 +517,7 @@ router.post('/users/:userid/vedio', function(req, res) {
 
 router.put('/users/:userid/vedio/:id', function(req, res) {
   var data = req.body.data;
-  vedioModel
+  videoModel
   .update({data: data},{where:{id: req.params.id}})
   .then(function(data){
     res.send(200, 'success');

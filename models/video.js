@@ -1,4 +1,4 @@
-var videoFrame = sequelize.define('vediofarmes', {
+var videoFrame = sequelize.define('vedioframes', {
   id: {
     type: Sequelize.BIGINT,
     autoIncrement: true
