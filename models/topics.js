@@ -1,13 +1,13 @@
-var textFrame = sequelize.define('textframes', {
+var Categories = sequelize.define('topics', {
   id: {
     type: Sequelize.BIGINT,
     autoIncrement: true
   },
-  userid: {
-    type: Sequelize.STRING,
+  topicName: {
+    type: Sequelize.STRING(100)
   },
-  data: {
-    type: Sequelize.TEXT,
+  status: {
+    type: Sequelize.BOOLEAN
   },
   createdAt: {
     type: Sequelize.DATE,
@@ -23,4 +23,4 @@ var textFrame = sequelize.define('textframes', {
   freezeTableName: true
 });
 
-module.exports = textFrame;
+module.exports = Categories;

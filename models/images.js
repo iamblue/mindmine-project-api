@@ -1,13 +1,22 @@
-var noteFrame = sequelize.define('noteframes', {
+var Posts = sequelize.define('images', {
   id: {
     type: Sequelize.BIGINT,
     autoIncrement: true
   },
-  userid: {
+  albumId: {
+    type: Sequelize.STRING
+  },
+  imageUrlId: {
     type: Sequelize.STRING,
   },
-  data: {
-    type: Sequelize.TEXT,
+  name: {
+    type: Sequelize.STRING
+  },
+  description: {
+    type: Sequelize.TEXT
+  },
+  status: {
+    type: Sequelize.BOOLEAN
   },
   createdAt: {
     type: Sequelize.DATE,
@@ -23,4 +32,4 @@ var noteFrame = sequelize.define('noteframes', {
   freezeTableName: true
 });
 
-module.exports = noteFrame;
+module.exports = Posts;

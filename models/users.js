@@ -1,13 +1,19 @@
-var photoFrame = sequelize.define('photoframes', {
+var Users = sequelize.define('users', {
   id: {
     type: Sequelize.BIGINT,
     autoIncrement: true
   },
-  userid: {
-    type: Sequelize.STRING,
+  userId: {
+    type: Sequelize.STRING
   },
-  data: {
-    type: Sequelize.TEXT,
+  email: {
+    type: Sequelize.TEXT
+  },
+  password: {
+    type: Sequelize.TEXT
+  },
+  status: {
+    type: Sequelize.BOOLEAN
   },
   createdAt: {
     type: Sequelize.DATE,
@@ -23,4 +29,4 @@ var photoFrame = sequelize.define('photoframes', {
   freezeTableName: true
 });
 
-module.exports = photoFrame;
+module.exports = Users;

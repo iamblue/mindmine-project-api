@@ -1,13 +1,17 @@
-var listFrame = sequelize.define('listframes', {
+var Categories = sequelize.define('categories', {
   id: {
     type: Sequelize.BIGINT,
     autoIncrement: true
   },
-  userid: {
-    type: Sequelize.STRING,
+  categoryName: {
+    type: Sequelize.STRING(100)
   },
-  data: {
-    type: Sequelize.TEXT,
+  topicId: {
+    type: Sequelize.BIGINT,
+    allowNull: false
+  },
+  status: {
+    type: Sequelize.BOOLEAN
   },
   createdAt: {
     type: Sequelize.DATE,
@@ -23,4 +27,4 @@ var listFrame = sequelize.define('listframes', {
   freezeTableName: true
 });
 
-module.exports = listFrame
+module.exports = Categories;

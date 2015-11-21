@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Socket.io</title>
+  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+<ul class="userList">
+  <li>姓名: 陳上線狀態: *</li>
+</ul>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+
+  //透過拿到userId, name, 上線狀態
+  var userId = window.location.pathname.split('/sockets/')[1]
+  console.log(userId)
+
+  var data = [{
+    name: '陳柏儒',
+    online: true,
+    userId: 10001
+  },{
+    name: '焦品貴'
+  }];
+  $.ajax({
+    method: 'GET',
+    url:'/users/' + userId +'/friends'
+  }).done(function(data){
+    console.log(data);
+    init(data);
+  })
+
+  // 這段是假設us
+
+  var dataStr = '';
+
+  function init(data){
+    dataStr = '';
+    for(var i = 0; i< data.length; i++){
+      dataStr += '<li>'+ data[i].name + ' ,上線狀態:' + data[i].online +'</li>';
+    }
+    $('.userList').html(
+      dataStr
+    );
+  }
+
+
+
+  var socket = io.connect('http://localhost:3999');
+  socket.on('/users/' + data.userId + '/friends', function (data) {
+    init(data);
+  });
+
+</script>
+</body>
+</html>

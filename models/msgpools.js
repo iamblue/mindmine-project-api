@@ -1,13 +1,16 @@
-var routineFrame = sequelize.define('routineframes', {
+var Msgpools = sequelize.define('msgpools', {
   id: {
     type: Sequelize.BIGINT,
     autoIncrement: true
   },
-  userid: {
-    type: Sequelize.STRING,
+  userId: {
+    type: Sequelize.STRING
   },
-  data: {
-    type: Sequelize.TEXT,
+  content: {
+    type: Sequelize.TEXT
+  },
+  status: {
+    type: Sequelize.BOOLEAN
   },
   createdAt: {
     type: Sequelize.DATE,
@@ -23,4 +26,4 @@ var routineFrame = sequelize.define('routineframes', {
   freezeTableName: true
 });
 
-module.exports = routineFrame;
+module.exports = Msgpools;

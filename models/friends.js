@@ -1,13 +1,16 @@
-var storyFrame = sequelize.define('storyframes', {
+var Posts = sequelize.define('friends', {
   id: {
     type: Sequelize.BIGINT,
     autoIncrement: true
   },
-  userid: {
-    type: Sequelize.STRING,
+  userId: {
+    type: Sequelize.STRING
   },
-  data: {
-    type: Sequelize.TEXT,
+  invitedUserId: {
+    type: Sequelize.STRING
+  },
+  status: {
+    type: Sequelize.BOOLEAN
   },
   createdAt: {
     type: Sequelize.DATE,
@@ -22,4 +25,5 @@ var storyFrame = sequelize.define('storyframes', {
 },{
   freezeTableName: true
 });
-module.exports = storyFrame;
+
+module.exports = Posts;

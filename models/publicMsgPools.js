@@ -1,13 +1,16 @@
-var videoFrame = sequelize.define('vedioframes', {
+var publicMsgPools = sequelize.define('publicmsgpools', {
   id: {
     type: Sequelize.BIGINT,
     autoIncrement: true
   },
-  userid: {
-    type: Sequelize.STRING,
+  userId: {
+    type: Sequelize.STRING
   },
-  data: {
-    type: Sequelize.TEXT,
+  content: {
+    type: Sequelize.TEXT
+  },
+  status: {
+    type: Sequelize.BOOLEAN
   },
   createdAt: {
     type: Sequelize.DATE,
@@ -23,4 +26,4 @@ var videoFrame = sequelize.define('vedioframes', {
   freezeTableName: true
 });
 
-module.exports = videoFrame;
+module.exports = publicMsgPools;

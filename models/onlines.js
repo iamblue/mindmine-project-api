@@ -1,13 +1,13 @@
-var webFrame = sequelize.define('webframes', {
+var Onlines = sequelize.define('onlines', {
   id: {
     type: Sequelize.BIGINT,
     autoIncrement: true
   },
-  userid: {
-    type: Sequelize.STRING,
+  userId: {
+    type: Sequelize.STRING
   },
-  data: {
-    type: Sequelize.TEXT,
+  status: {
+    type: Sequelize.BOOLEAN
   },
   createdAt: {
     type: Sequelize.DATE,
@@ -23,4 +23,4 @@ var webFrame = sequelize.define('webframes', {
   freezeTableName: true
 });
 
-module.exports = webFrame;
+module.exports = Onlines;

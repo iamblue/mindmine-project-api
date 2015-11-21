@@ -1,13 +1,19 @@
-var staticFrame = sequelize.define('staticframes', {
+var Posts = sequelize.define('albums', {
   id: {
     type: Sequelize.BIGINT,
     autoIncrement: true
   },
-  userid: {
-    type: Sequelize.STRING,
+  userId: {
+    type: Sequelize.STRING
   },
-  data: {
-    type: Sequelize.TEXT,
+  name: {
+    type: Sequelize.STRING
+  },
+  description: {
+    type: Sequelize.TEXT
+  },
+  status: {
+    type: Sequelize.BOOLEAN
   },
   createdAt: {
     type: Sequelize.DATE,
@@ -23,4 +29,4 @@ var staticFrame = sequelize.define('staticframes', {
   freezeTableName: true
 });
 
-module.exports = staticFrame;
+module.exports = Posts;
