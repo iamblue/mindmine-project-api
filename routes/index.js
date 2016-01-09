@@ -34,7 +34,7 @@ function encodePassword(password) {
 }
 
 router.get('/image/:imageId', function(req, res, next) {
-  return res.redirect('https://s3-us-west-2.amazonaws.com/mindmine/' + req.params.imageId);
+  return res.redirect('https://s3-ap-southeast-1.amazonaws.com/mtk.linkit/device/' + req.params.imageId);
 });
 
 
@@ -164,8 +164,8 @@ router.post('/users/:userId/albums/:albumId/images', function(req, res, next) {
 
   fs.readFile('/' + req.files.file.path, function(_err, data){
     var params = {
-      Bucket: 'mindmine',
-      Key: 'posts/' + _re,
+      Bucket: 'mtk.linkit',
+      Key: 'device/' + _re,
       Body: data,
       ACL: 'public-read'
     };
