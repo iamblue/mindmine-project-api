@@ -355,7 +355,7 @@ router.put('/topics/:topicId/categories/:categoryId', function(req, res, next) {
 
 router.delete('/topics/:topicId/categories/:categoryId', function(req, res, next) {
   return categories.update({
-    status: false
+    status: false,
   }, {
     where: {
       topicId: req.params.topicId,
@@ -372,6 +372,7 @@ router.delete('/topics/:topicId/categories/:categoryId', function(req, res, next
 router.get('/topics/:topicId/categories/:categoryId/all', function(req,res, next) {
   var categoryId = req.params.categoryId;
   return posts.findAll({
+    order: 'createdAt DESC',
     where: {
       categoryId: categoryId,
       status: true
