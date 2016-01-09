@@ -33,6 +33,11 @@ function encodePassword(password) {
   return hmac.digest('hex').substr(3)
 }
 
+router.get('/image/:imageId', function(req, res, next) {
+  return res.redirect('https://s3-us-west-2.amazonaws.com/mindmine/' + req.params.imageId);
+});
+
+
 //get all user's album
 router.get('/users/:userId/albums', function(req, res, next) {
 
@@ -159,8 +164,8 @@ router.post('/users/:userId/albums/:albumId/images', function(req, res, next) {
 
   fs.readFile('/' + req.files.file.path, function(_err, data){
     var params = {
-      Bucket: 'mtk.linkit',
-      Key: 'device/' + _re,
+      Bucket: 'mindmine',
+      Key: 'posts/' + _re,
       Body: data,
       ACL: 'public-read'
     };
