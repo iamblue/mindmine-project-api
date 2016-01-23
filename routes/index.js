@@ -62,9 +62,7 @@ router.put('/users/:userId/albums/:albumId', function(req, res, next) {
     name: req.body.name,
     description: req.body.description,
   },{
-    where: {
-      id: req.params.albumId,
-    },
+    id: req.params.albumId,
   }).then(function(data) {
     return res.send(200, 'success');
   }).catch(function(err) {
@@ -78,9 +76,7 @@ router.delete('/users/:userId/albums/:albumId', function(req, res, next) {
   return albums.update({
     status: false,
   },{
-    where: {
-      id: req.params.albumId,
-    },
+    id: req.params.albumId,
   }).then(function(data) {
     return res.send(200, 'success');
   }).catch(function(err) {
@@ -119,9 +115,7 @@ router.delete('/users/:userId/albums/:albumId/images/:imageId', function(req, re
   return images.update({
     status: false,
   },{
-    where: {
-      id: req.params.imageId,
-    },
+    id: req.params.imageId,
   }).then(function(data) {
     return res.send(200, 'success');
   }).catch(function(err) {
@@ -135,9 +129,7 @@ router.put('/users/:userId/albums/:albumId/images/:imageId', function(req, res, 
     name: req.body.name,
     description: req.body.description,
   },{
-    where: {
-      id: req.params.imageId,
-    },
+    id: req.params.imageId,
   }).then(function(data) {
     return res.send(200, 'success');
   }).catch(function(err) {
@@ -261,9 +253,7 @@ router.put('/topics/:topicId', function(req, res, next) {
     status: status,
     topicName: topicName,
   }, {
-    where: {
-      id: req.params.topicId
-    }
+    id: req.params.topicId
   }).then(function(data) {
     return res.send(200, 'success');
   }).catch(function(err) {
@@ -277,9 +267,7 @@ router.delete('/topics/:topicId', function(req, res, next) {
   return topics.update({
     status: false,
   },{
-    where: {
-      id: req.params.topicId
-    }
+    id: req.params.topicId
   }).then(function(data) {
     return res.send(200, 'success');
   }).catch(function(err) {
@@ -347,10 +335,8 @@ router.put('/topics/:topicId/categories/:categoryId', function(req, res, next) {
   return categories.update({
     categoryName: req.body.categoryName
   }, {
-    where: {
-      topicId: req.params.topicId,
-      id: req.params.categoryId
-    }
+    topicId: req.params.topicId,
+    id: req.params.categoryId
   }).then(function(data) {
     return res.send(200, 'success');
   }).catch(function(err) {
@@ -362,10 +348,8 @@ router.delete('/topics/:topicId/categories/:categoryId', function(req, res, next
   return categories.update({
     status: false,
   }, {
-    where: {
-      topicId: req.params.topicId,
-      id: req.params.categoryId
-    }
+    topicId: req.params.topicId,
+    id: req.params.categoryId,
   }).then(function(data) {
     return res.send(200, { data: 'success' });
   }).catch(function(err) {
@@ -411,9 +395,7 @@ router.post('/signin', function(req, res, next) {
           onlines.update({
             status: true
           },{
-            where: {
-              userId: data.get('userId'),
-            },
+            userId: data.get('userId'),
           });
         } else {
           onlines.create({
@@ -474,9 +456,7 @@ router.post('/signup', function(req, res, next) {
         users.update({
           userId: 100000000 + data.get('id')
         },{
-          where: {
-            email: req.body.email
-          }
+          email: req.body.email
         }).then(function(data) {
           return res.send(200, 'success');
         });
@@ -628,10 +608,8 @@ router.post('/users/:userId/invite/active', function(req, res, next) {
   .update({
     status: true,
   },{
-    where: {
-      sendInvitedUserId: sendInvitedUserId,
-      userId: userId,
-    }
+    sendInvitedUserId: sendInvitedUserId,
+    userId: userId,
   })
   .then(function(data) {
 
@@ -784,8 +762,9 @@ router.get('/users/:userId/topics/:topicId/categories/:categoryId/posts/:postId'
 
   posts.find({
     where: {
-      postId:     req.params.postId,
+      id:     req.params.postId,
       categoryId: req.params.categoryId,
+      userId:     req.params.userId,
       status:     true
     },
     attributes: [
@@ -835,15 +814,13 @@ router.put('/users/:userId/topics/:topicId/categories/:categoryId/posts/:postId'
   if (rightContentConfig) {
     data.rightContentConfig = rightContentConfig;
   }
-
+  console.log(data)
   posts.update(data, {
-    where: {
-      userId: req.params.userId,
-      categoryId: req.params.categoryId,
-      id: req.params.postId,
-    }
+    userId: req.params.userId,
+    id: req.params.postId,
+    status: true,
   }).then(function(data) {
-
+    console.log('=========')
     return res.send(200, {
       status: 'success',
       postId: req.params.postId,
@@ -863,11 +840,9 @@ router.delete('/users/:userId/topics/:topicId/categories/:categoryId/posts/:post
   posts.update({
     status: false
   }, {
-    where: {
-      categoryId: req.params.categoryId,
-      userId: req.params.userId,
-      id: req.params.postId,
-    }
+    categoryId: req.params.categoryId,
+    userId: req.params.userId,
+    id: req.params.postId,
   }).then(function(data){
 
     return res.send(200, {
